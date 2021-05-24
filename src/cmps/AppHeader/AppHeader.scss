@@ -1,0 +1,40 @@
+.App-Header {
+    background-color: transparent;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    transition: all 0.2s ease-in-out;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .first-child {
+
+        img.logo {
+            // margin-top: 30px;
+            width: 40%;
+        }
+    }
+
+    .second-child {
+        margin-inline-end: 70px;
+
+        ul {
+            display: flex;
+            list-style-type: none;
+
+            li {
+                margin-right: 15px;
+
+                img {
+                    width: 30px;
+                }
+                img:hover{
+                    width: 40px;
+                }
+            }
+        }
+    }
+}

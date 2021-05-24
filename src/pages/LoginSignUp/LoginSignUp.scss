@@ -1,0 +1,87 @@
+.signup-login-page {
+
+    .App-Header {
+        position: relative;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+    }
+
+    .signup-page {
+        background-color: lightgrey;
+
+        h1 {
+            color: black;
+            font-size: 1.2rem;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: 500;
+        }
+
+        .signup {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+
+            input {
+                margin-bottom: 10px;
+            }
+
+            button {
+                margin-bottom: 20px;
+                box-shadow: inset 0px 1px 0px 0px #91b8b3;
+                background: linear-gradient(to bottom, #768d87 5%, #77afaf 100%);
+                background-color: #768d87;
+                border-radius: 24px;
+                border: 1px solid #566963;
+                display: inline-block;
+                cursor: pointer;
+                color: #ffffff;
+                font-family: Arial;
+                font-size: 22px;
+                padding: 10px 10px;
+                text-decoration: none;
+                text-shadow: 0px 2px 0px #4e8079;
+            }
+        }
+    }
+
+    .login-page {
+        .login {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+
+            input {
+                margin-bottom: 10px;
+            }
+
+            button {
+                margin-bottom: 20px;
+                box-shadow: inset 0px 1px 0px 0px #91b8b3;
+                background: linear-gradient(to bottom, #768d87 5%, #77afaf 100%);
+                background-color: #768d87;
+                border-radius: 24px;
+                border: 1px solid #566963;
+                display: inline-block;
+                cursor: pointer;
+                color: #ffffff;
+                font-family: Arial;
+                font-size: 22px;
+                padding: 10px 10px;
+                text-decoration: none;
+                text-shadow: 0px 2px 0px #4e8079;
+            }
+        }
+    }
+
+    button.change-shown {
+        color: blue;
+        background-color: unset;
+        border: none;
+        cursor: pointer;
+    }
+
+    .isShown {
+        display: none;
+    }
+}
