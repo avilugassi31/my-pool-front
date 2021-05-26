@@ -21,7 +21,6 @@ export class _PoolEdit extends Component {
         },
     };
     async componentDidMount() {
-        this.props.loadMembers();
         const { id } = this.props.match.params;
         const member = id
             ? await poolService.getById(id)
@@ -48,8 +47,8 @@ export class _PoolEdit extends Component {
                 title: `New Member added - ${this.state.member.name}`,
                 message: `${this.state.member.name} Just Did a new Membership - ${this.state.member.type}`,
             };
-            socketService.emit('add msg', msg);
             this.props.members.push(member);
+            socketService.emit('add msg', msg);
             this.props.history.push('/pool');
         } catch (err) {
             console.log('err:', err);
