@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { loadUser } from '../../store/actions/userActions';
 import { NavLink } from 'react-router-dom';
+import {ServerModal} from '../../cmps/Modal/Modal'
+import { socketService } from '../../services/socket.service';
 import logo from '../../assests/imgs/logo.png';
 import user from '../../assests/imgs/users.png';
 import signup from '../../assests/imgs/signup.png';
@@ -10,8 +12,11 @@ import './AppHeader.scss';
 
 class _AppHeader extends React.Component {
     componentDidMount() {
-        // this.props.loadUser()
-        console.log(this.props.user);
+        socketService.setup();
+        socketService.emit('user msg', 'msgs');
+        socketService.on('show msg',({title,message})=>{
+            ServerModal(title,message)
+        })
     }
     render() {
         return (

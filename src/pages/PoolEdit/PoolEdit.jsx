@@ -2,6 +2,7 @@ import { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { poolService } from '../../services/pool.service';
 import home from '../../assests/imgs/home.png';
+import { socketService } from '../../services/socket.service';
 import './PoolEdit.scss';
 
 export class PoolEdit extends Component {
@@ -21,6 +22,7 @@ export class PoolEdit extends Component {
             ? await poolService.getById(id)
             : poolService.getEmptyMember();
         this.setState({ member });
+        socketService.setup();
     }
     handleChange = ({ target }) => {
         const field = target.name;
@@ -34,6 +36,11 @@ export class PoolEdit extends Component {
         ev.preventDefault();
         console.log(this.state.member, 'member in edit after add');
         await poolService.saveMember({ ...this.state.member });
+        const msg = {
+            title: `New Member added - ${this.state.member.name}`,
+            message: `${this.state.member.name} Just Did a new Membership - ${this.state.member.type}`,
+          };
+          socketService.emit("add msg", msg);
         this.props.history.push('/pool');
     };
     render() {
