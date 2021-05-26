@@ -11,7 +11,6 @@ export const poolService = {
 
 async function getMembers() {
     const members = await httpService.get(POOL_URl);
-    console.log('members:', members)
     return members;
 }
 

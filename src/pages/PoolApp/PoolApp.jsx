@@ -11,6 +11,11 @@ export class _PoolApp extends Component {
     componentDidMount() {
         this.props.loadMembers();
     }
+    componentDidUpdate = async (prevProps) => {
+        if (this.props.members !== prevProps.members) {
+            await this.props.loadMembers();
+        } 
+    };
     render() {
         const { members } = this.props;
         return (

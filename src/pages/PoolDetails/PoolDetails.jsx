@@ -2,7 +2,7 @@ import { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { removeMember, getMemberById } from '../../store/actions/poolActions';
-// import { AppHeader } from '../../cmps/AppHeader/AppHeader';
+import { socketService } from '../../services/socket.service';
 import edit from '../../assests/imgs/edit.png';
 import remove from '../../assests/imgs/delete.png';
 import home from '../../assests/imgs/home.png';
@@ -15,9 +15,17 @@ import './PoolDetails.scss';
 export class _PoolDetails extends Component {
     componentDidMount = async () => {
         await this.props.getMemberById(this.props.match.params.id);
+        socketService.setup();
+        socketService.emit('user msg', 'msgs');
     };
     removeMember = async (memberId) => {
         await this.props.removeMember(memberId);
+        const member = this.props.member;
+        const msg = {
+            title: ` Member removed - ${member.name}`,
+            message: `${member.name} Just Removed`,
+        };
+        socketService.emit('add msg', msg);
         this.props.history.push('/pool');
     };
     render() {
@@ -39,7 +47,7 @@ export class _PoolDetails extends Component {
                             <img src={home} alt='' />
                             {''} {member.city}
                         </h2>
-                        <h2 className="members-img" >
+                        <h2 className='members-img'>
                             <img src={members} alt='' /> {''} {member.members}
                         </h2>
                         <h2>

@@ -1,11 +1,15 @@
 import { Component } from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { loadMembers } from '../../store/actions/poolActions';
 import { poolService } from '../../services/pool.service';
 import home from '../../assests/imgs/home.png';
 import { socketService } from '../../services/socket.service';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './PoolEdit.scss';
 
-export class PoolEdit extends Component {
+export class _PoolEdit extends Component {
     state = {
         member: {
             name: '',
@@ -17,12 +21,15 @@ export class PoolEdit extends Component {
         },
     };
     async componentDidMount() {
+        this.props.loadMembers();
         const { id } = this.props.match.params;
         const member = id
             ? await poolService.getById(id)
             : poolService.getEmptyMember();
         this.setState({ member });
+        console.log(this.props);
         socketService.setup();
+        socketService.emit('user msg', 'msgs');
     }
     handleChange = ({ target }) => {
         const field = target.name;
@@ -33,15 +40,28 @@ export class PoolEdit extends Component {
     };
 
     onSaveMember = async (ev) => {
-        ev.preventDefault();
-        console.log(this.state.member, 'member in edit after add');
-        await poolService.saveMember({ ...this.state.member });
-        const msg = {
-            title: `New Member added - ${this.state.member.name}`,
-            message: `${this.state.member.name} Just Did a new Membership - ${this.state.member.type}`,
-          };
-          socketService.emit("add msg", msg);
-        this.props.history.push('/pool');
+        try {
+            ev.preventDefault();
+            const member = this.state.member;
+            await poolService.saveMember(member);
+            const msg = {
+                title: `New Member added - ${this.state.member.name}`,
+                message: `${this.state.member.name} Just Did a new Membership - ${this.state.member.type}`,
+            };
+            socketService.emit('add msg', msg);
+            this.props.members.push(member);
+            this.props.history.push('/pool');
+        } catch (err) {
+            console.log('err:', err);
+            const msg = {
+                title: `Cannot Add Member- ${this.state.member.name}`,
+                message: `${this.state.member.name} Cannot be add - ${err}`,
+            };
+            socketService.emit('add msg', msg);
+            socketService.on('show msg', ({ title, message }) => {
+                toast.error(title, message);
+            });
+        }
     };
     render() {
         const { name, city, members, type, createdAt, finishedAt } = this.state;
@@ -139,7 +159,19 @@ export class PoolEdit extends Component {
                         <img src={home} alt='' />
                     </Link>
                 </form>
+                <ToastContainer />
             </div>
         );
     }
 }
+const mapStateToProps = (state) => {
+    return {
+        members: state.poolReducer.members,
+    };
+};
+
+const mapDispatchToProps = {
+    loadMembers,
+};
+
+export const PoolEdit = connect(mapStateToProps, mapDispatchToProps)(_PoolEdit);

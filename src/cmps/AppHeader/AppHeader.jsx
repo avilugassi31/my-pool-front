@@ -2,7 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { loadUser } from '../../store/actions/userActions';
 import { NavLink } from 'react-router-dom';
-import {ServerModal} from '../../cmps/Modal/Modal'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { socketService } from '../../services/socket.service';
 import logo from '../../assests/imgs/logo.png';
 import user from '../../assests/imgs/users.png';
@@ -14,9 +15,12 @@ class _AppHeader extends React.Component {
     componentDidMount() {
         socketService.setup();
         socketService.emit('user msg', 'msgs');
-        socketService.on('show msg',({title,message})=>{
-            ServerModal(title,message)
-        })
+        socketService.on('show msg', ({ title, message }) => {
+            toast.success(title, message);
+        });
+    }
+    componentWillUnmount() {
+        socketService.off('user msg', 'msgs');
     }
     render() {
         return (
@@ -39,6 +43,7 @@ class _AppHeader extends React.Component {
                             </NavLink>
                         </li>
                     </ul>
+                    <ToastContainer />
                 </div>
             </section>
         );

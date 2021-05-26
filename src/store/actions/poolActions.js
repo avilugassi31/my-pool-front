@@ -4,7 +4,6 @@ import { poolService } from '../../services/pool.service';
   export function loadMembers() {
     return async (dispatch) => {
         const members = await poolService.getMembers();
-        console.log('members in actions:', members)
         const action = {
             type: 'SET_MEMBERS',
             members,
