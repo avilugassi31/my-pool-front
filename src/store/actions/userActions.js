@@ -8,6 +8,7 @@ export function signUp(imgUrl,username, password, fullname) {
             password,
             fullname,
         };
+        console.log('user in store',user)
         await userService.signup(user);
         const action = {
             type: 'SET_USER',

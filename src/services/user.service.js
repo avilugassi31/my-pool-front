@@ -22,7 +22,7 @@ function getLoggedUser() {
 }
 
 function signup(user) {
-    console.log('user:', user)
+    console.log('user in service front:', user)
     user.createdAt = Date.now();
     sessionStorage.setItem('signup', JSON.stringify(user));
     console.log('user:', user)

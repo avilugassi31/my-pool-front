@@ -17,6 +17,7 @@ class _LoginSignUp extends Component {
     setSignup = async (ev) => {
         ev.preventDefault();
         var { imgUrl, username, password, fullname } = this.props.user;
+        console.log('username in login cmp:', username)
         imgUrl = this.state.imgUrl;
         username = ev.target[1].value;
         password = ev.target[2].value;
