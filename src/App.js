@@ -11,11 +11,11 @@ function App() {
         <Router>
             <div className='App'>
                 <Switch>
-                    <Route component={UserProfile} path='/user/:userId' />
+                    <Route component={UserProfile} path='/user/:userId?' />
                     <Route component={PoolEdit} path='/pool/edit/:id?' />
                     <Route component={PoolDetails} path='/pool/:id' />
-                    <Route component={PoolApp} path='/pool' />
-                    <Route component={LoginSignUp} path='/' />
+                    <Route component={LoginSignUp} path='/login' />
+                    <Route component={PoolApp} path='/' />
                 </Switch>
             </div>
         </Router>

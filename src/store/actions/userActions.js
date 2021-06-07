@@ -1,6 +1,6 @@
 import { userService } from '../../services/user.service';
 
-export function signUp(imgUrl,username, password, fullname) {
+export function signUp(imgUrl, username, password, fullname) {
     return async (dispatch) => {
         const user = {
             imgUrl,
@@ -8,7 +8,7 @@ export function signUp(imgUrl,username, password, fullname) {
             password,
             fullname,
         };
-        console.log('user in store',user)
+        console.log('user in store', user);
         await userService.signup(user);
         const action = {
             type: 'SET_USER',
@@ -24,7 +24,7 @@ export function login(user) {
             username: user.username,
             password: user.password,
         };
-        console.log('loggedUser:', loggedUser)
+        console.log('loggedUser:', loggedUser);
         await userService.login(loggedUser);
         const action = {
             type: 'GET_USER',
@@ -33,9 +33,23 @@ export function login(user) {
         dispatch(action);
     };
 }
+export function logout() {
+    return async (dispatch) => {
+        try {
+            await userService.logout();
+            const action = {
+                type: 'SET_USER',
+                user: null,
+            };
+            dispatch(action);
+        } catch (error) {
+            console.log('error:', error);
+        }
+    };
+}
 export function loadUser() {
     return (dispatch) => {
-        const user = userService.getUser();
+        const user = userService.getLoggedUser();
         const action = {
             type: 'SET_USER',
             user,

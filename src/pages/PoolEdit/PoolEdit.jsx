@@ -49,7 +49,7 @@ export class _PoolEdit extends Component {
             };
             this.props.members.push(member);
             socketService.emit('add msg', msg);
-            this.props.history.push('/pool');
+            this.props.history.push('/');
         } catch (err) {
             console.log('err:', err);
             const msg = {

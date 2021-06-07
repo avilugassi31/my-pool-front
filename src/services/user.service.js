@@ -1,4 +1,3 @@
-
 import { httpService } from './http.service';
 
 const USER_URL = 'user/';
@@ -17,22 +16,31 @@ function getById(id) {
 }
 
 function getLoggedUser() {
-    const user = JSON.parse(sessionStorage.getItem('login'));
-    return user;
+    const loggedInUser = sessionStorage.getItem('loggedInUser');
+    // console.log('loggedInUser:', loggedInUser);
+    if (loggedInUser) return JSON.parse(loggedInUser);
+    return null;
+    // const user = JSON.parse(sessionStorage.getItem('login'));
+    // return user;
 }
 
-function signup(user) {
-    console.log('user in service front:', user)
-    user.createdAt = Date.now();
-    sessionStorage.setItem('signup', JSON.stringify(user));
+async function signup(user) {
     console.log('user:', user)
-    return httpService.post(AUTH_URL + 'signup', user);
+    try {
+        user.createdAt = Date.now();
+        const updatedUser = await httpService.post(AUTH_URL + 'signup', user);
+        console.log('updatedUser:', updatedUser)
+        sessionStorage.setItem('loggedInUser', JSON.stringify(updatedUser));
+        return updatedUser;
+    } catch (err) {
+        console.log(err);
+    }
 }
 
 async function login(user) {
-    console.log('user:', user)
+    console.log('user:', user);
     const userFromBack = await httpService.post(AUTH_URL + 'login', user);
-    console.log('userFromBack:', userFromBack)
+    console.log('userFromBack:', userFromBack);
     sessionStorage.setItem('login', JSON.stringify(userFromBack));
     return userFromBack;
 }

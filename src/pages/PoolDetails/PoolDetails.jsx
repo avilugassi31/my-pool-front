@@ -26,7 +26,7 @@ export class _PoolDetails extends Component {
             message: `${member.name} Just Removed`,
         };
         socketService.emit('add msg', msg);
-        this.props.history.push('/pool');
+        this.props.history.push('/');
     };
     render() {
         const { member } = this.props;
@@ -72,7 +72,7 @@ export class _PoolDetails extends Component {
                             <Link to={'/pool/edit/' + member._id}>
                                 <img src={edit} alt='' />
                             </Link>
-                            <Link to={'/pool'}>
+                            <Link to={'/'}>
                                 <img src={home} alt='' />
                             </Link>
                         </div>

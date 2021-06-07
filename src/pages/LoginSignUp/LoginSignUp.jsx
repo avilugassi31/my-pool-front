@@ -6,24 +6,40 @@ import { login, signUp } from '../../store/actions/userActions';
 import { UploadImage } from '../../cmps/UploadImage/UploadImage';
 import { uploadImg } from '../../services/img-upload.service';
 import './LoginSignUp.scss';
+import { socketService } from '../../services/socket.service';
 
 class _LoginSignUp extends Component {
     state = {
         imgUrl: null,
     };
     componentDidMount() {
-        // console.log(this.props);
+        socketService.setup();
+        console.log(this.props);
+    }
+    componentWillUnmount(){
+        socketService.off()
     }
     setSignup = async (ev) => {
-        ev.preventDefault();
-        var { imgUrl, username, password, fullname } = this.props.user;
-        console.log('username in login cmp:', username)
-        imgUrl = this.state.imgUrl;
-        username = ev.target[1].value;
-        password = ev.target[2].value;
-        fullname = ev.target[3].value;
-        await this.props.signUp(imgUrl, username, password, fullname);
-        this.props.history.push('/pool');
+        try {
+            ev.preventDefault();
+            var { imgUrl, username, password, fullname } = this.props.user;
+            imgUrl = this.state.imgUrl;
+            username = ev.target[1].value;
+            password = ev.target[2].value;
+            fullname = ev.target[3].value;
+            const user = await this.props.signUp(
+                imgUrl,
+                username,
+                password,
+                fullname
+            );
+            console.log('user:', user);
+            this.props.users.push(user);
+            console.log('   this.props.users:', this.props.users);
+            this.props.history.push('/');
+        } catch (error) {
+            console.log('error:', error);
+        }
     };
     setLogin = async (ev) => {
         ev.preventDefault();
@@ -31,7 +47,7 @@ class _LoginSignUp extends Component {
         this.props.loggedUser.password = ev.target[1].value;
         console.log(this.props.loggedUser, 'loggedUser');
         await this.props.login(this.props.loggedUser);
-        this.props.history.push('/pool');
+        this.props.history.push('/');
     };
     onChangeToLogin() {
         var divLogin = document.querySelector('.login-page');
@@ -55,8 +71,7 @@ class _LoginSignUp extends Component {
     onUploadImage = async (ev) => {
         const img = await uploadImg(ev);
         var imgUrl = img.url;
-       return this.setState({ imgUrl });
-      
+        return this.setState({ imgUrl });
     };
     render() {
         const { username, password, fullname } = this.props.user;
@@ -132,6 +147,7 @@ const mapStateToProps = (state) => {
         user: state.userReducer.user,
         loggedInUser: state.userReducer.loggedInUser,
         loggedUser: state.userReducer.loggedUser,
+        users: state.userReducer.users,
     };
 };
 
