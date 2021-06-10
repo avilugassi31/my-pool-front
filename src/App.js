@@ -1,4 +1,5 @@
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
+import { HeroPage } from './pages/HeroPage/HeroPage';
 import { PoolApp } from './pages/PoolApp/PoolApp';
 import { PoolEdit } from './pages/PoolEdit/PoolEdit';
 import { PoolDetails } from './pages/PoolDetails/PoolDetails';
@@ -15,7 +16,8 @@ function App() {
                     <Route component={PoolEdit} path='/pool/edit/:id?' />
                     <Route component={PoolDetails} path='/pool/:id' />
                     <Route component={LoginSignUp} path='/login' />
-                    <Route component={PoolApp} path='/' />
+                    <Route component={PoolApp} path='/pool' />
+                    <Route component={HeroPage} path='/' />
                 </Switch>
             </div>
         </Router>

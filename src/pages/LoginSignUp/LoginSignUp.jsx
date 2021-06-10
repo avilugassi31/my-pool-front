@@ -36,7 +36,7 @@ class _LoginSignUp extends Component {
             console.log('user:', user);
             this.props.users.push(user);
             console.log('   this.props.users:', this.props.users);
-            this.props.history.push('/');
+            this.props.history.push('/pool');
         } catch (error) {
             console.log('error:', error);
         }
@@ -47,7 +47,7 @@ class _LoginSignUp extends Component {
         this.props.loggedUser.password = ev.target[1].value;
         console.log(this.props.loggedUser, 'loggedUser');
         await this.props.login(this.props.loggedUser);
-        this.props.history.push('/');
+        this.props.history.push('/pool');
     };
     onChangeToLogin() {
         var divLogin = document.querySelector('.login-page');

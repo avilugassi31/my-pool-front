@@ -1,0 +1,57 @@
+.hero-page {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../assests/imgs/pool.jpeg');
+    background-size: cover;
+    background-attachment: fixed;
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+
+
+
+    .main {
+        text-align: left;
+        position: absolute;
+        top: 20%;
+        left: 70%;
+        transform: translate(-50%, -50%);
+        color: white;
+
+        h1 {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 3.2rem;
+
+            .pool-span {
+                color: rgb(134, 240, 208);
+            }
+        }
+
+        a {
+            box-shadow: inset 0px 1px 0px 0px #91b8b3;
+            background: linear-gradient(to bottom, #768d87 5%, #87f0f0 100%);
+            background-color: #768d87;
+            border-radius: 24px;
+            border: 1px solid #566963;
+            display: inline-block;
+            cursor: pointer;
+            color: #ffffff;
+            font-family: Arial;
+            font-size: 21px;
+            padding: 17px 46px;
+            text-decoration: none;
+            text-shadow: 0px 2px 0px #4e8079;
+        }
+
+        a:hover {
+            background: linear-gradient(to bottom, #6c7c7c 5%, #7eaff0 100%);
+            background-color: #6c7c7c;
+        }
+
+        a:active {
+            position: relative;
+            top: 1px;
+        }
+    }
+
+}

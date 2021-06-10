@@ -16,7 +16,7 @@ export class _UserProfile extends Component {
     };
     setLogout = async () => {
         await this.props.logout();
-        this.props.history.push('/');
+        this.props.history.push('/pool');
     };
     render() {
         const { loggedInUser } = this.props;
