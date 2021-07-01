@@ -3,6 +3,7 @@ import { PoolPreview } from '../PoolPreview';
 import './PoolList.scss';
 
 export function PoolList({ members }) {
+ 
     return (
         <div className='pool-list'>
             {members &&

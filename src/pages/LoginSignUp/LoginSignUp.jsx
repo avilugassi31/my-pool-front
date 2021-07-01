@@ -2,7 +2,6 @@ import { Component } from 'react';
 import { connect } from 'react-redux';
 import { AppHeader } from '../../cmps/AppHeader/AppHeader';
 import { login, signUp } from '../../store/actions/userActions';
-// import camera from '../../services/camera.service';
 import { UploadImage } from '../../cmps/UploadImage/UploadImage';
 import { uploadImg } from '../../services/img-upload.service';
 import './LoginSignUp.scss';
@@ -14,10 +13,9 @@ class _LoginSignUp extends Component {
     };
     componentDidMount() {
         socketService.setup();
-        console.log(this.props);
     }
-    componentWillUnmount(){
-        socketService.off()
+    componentWillUnmount() {
+        socketService.off();
     }
     setSignup = async (ev) => {
         try {
@@ -33,9 +31,9 @@ class _LoginSignUp extends Component {
                 password,
                 fullname
             );
-            console.log('user:', user);
+
             this.props.users.push(user);
-            console.log('   this.props.users:', this.props.users);
+
             this.props.history.push('/pool');
         } catch (error) {
             console.log('error:', error);
@@ -45,7 +43,6 @@ class _LoginSignUp extends Component {
         ev.preventDefault();
         this.props.loggedUser.username = ev.target[0].value;
         this.props.loggedUser.password = ev.target[1].value;
-        console.log(this.props.loggedUser, 'loggedUser');
         await this.props.login(this.props.loggedUser);
         this.props.history.push('/pool');
     };

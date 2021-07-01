@@ -15,7 +15,6 @@ class _AppHeader extends React.Component {
         if (!this.props.user) {
             this.props.loadUser();
         }
-        console.log(this.props);
         socketService.setup();
         socketService.emit('user msg', 'msgs');
         socketService.on('show msg', ({ title, message }) => {

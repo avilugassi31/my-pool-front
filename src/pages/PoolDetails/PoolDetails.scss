@@ -1,29 +1,24 @@
 .pool-details {
-    // background-color:lightblue;
     box-sizing: border-box;
-    margin-top: 30px;
-    margin-bottom: 30px;
+    margin-top: 3px;
+    margin-bottom: 5px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-
-
-
     .member-name {
         margin: 0 auto 10px;
         text-transform: capitalize;
         color: black;
         text-decoration: underline;
     }
-
     h2 {
         margin-top: 10px;
         text-transform: capitalize;
-        color: rgb(126, 122, 122);
+        font-size: 1.2rem;
+        font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        color: rgb(62, 121, 180);
+        font-weight: 400;
     }
-
-
-
     .details-container {
-        background-color: white;
+        background-color: rgb(255, 255, 255);
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -31,7 +26,7 @@
         border-radius: 12px;
         box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
         width: 50%;
-        height: 30%;
+        height: 20%;
         margin: 0 auto;
 
         h2 {
@@ -51,10 +46,8 @@
             height: 300px;
 
             img {
-                // width: 500px;
                 height: 16.75rem;
                 object-fit: contain;
-                // border-radius: 12px 12px 0 0;
             }
         }
 

@@ -26,7 +26,6 @@ export class _PoolEdit extends Component {
             ? await poolService.getById(id)
             : poolService.getEmptyMember();
         this.setState({ member });
-        console.log(this.props);
         socketService.setup();
         socketService.emit('user msg', 'msgs');
     }

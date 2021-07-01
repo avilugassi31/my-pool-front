@@ -2,7 +2,7 @@ a {
     text-decoration: none;
     color: rgb(126, 122, 122);
 
-    .pool-preview {
+    .pool-preview-cmp {
         border-radius: 12px;
         box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
         display: flex;
@@ -12,8 +12,48 @@ a {
         background-color: white;
         text-transform: capitalize;
 
+        .pool-preview {
+            img {
+                border-radius: 50%;
+                margin-top: 20px;
+            }
+
+            h1 {
+                font-size: 1.2rem;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                text-decoration: underline;
+            }
+
+            h2 {
+                font-size: 1rem;
+                text-decoration: none;
+            }
+        }
+
+        .pool-preview-details {
+            h3 {
+                font-size: 1.2rem;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                color: rgb(62, 121, 180);
+                font-weight: 300;
+                // text-decoration:line-through;
+            }
+        }
+    }
+}
+
+.pool-preview-cmp-err {
+    border-radius: 12px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(226, 43, 43);
+    text-transform: capitalize;
+
+    .pool-preview-err {
         img {
-            width: 30%;
             border-radius: 50%;
             margin-top: 20px;
         }
@@ -21,11 +61,28 @@ a {
         h1 {
             font-size: 1.2rem;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-decoration: underline;
+            color: rgb(126, 122, 122);
         }
 
         h2 {
             font-size: 1rem;
             text-decoration: none;
+        }
+    }
+
+    .pool-preview-details-err {
+        h3 {
+            font-size: 1.2rem;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: rgb(210, 213, 216);
+            font-weight: 300;
+
+        }
+
+        .finished-err {
+            color: rgb(253, 252, 252);
+            font-weight: bolder;
         }
     }
 }
