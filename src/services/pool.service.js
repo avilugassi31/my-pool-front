@@ -37,5 +37,6 @@ function getEmptyMember() {
         type: '',
         createdAt: Date.now(),
         finishedAt:Date.now(),
+        email:''
     };
 }

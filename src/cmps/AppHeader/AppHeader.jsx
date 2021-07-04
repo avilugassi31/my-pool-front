@@ -37,7 +37,7 @@ class _AppHeader extends React.Component {
                     <div className='second-child'>
                         <ul>
                             <li>
-                                <NavLink exact to='/'>
+                                <NavLink exact to='/pool'>
                                     <img src={userImg} alt='' />
                                 </NavLink>
                             </li>
@@ -60,14 +60,14 @@ class _AppHeader extends React.Component {
             return (
                 <section className='App-Header'>
                     <div className='first-child'>
-                        <NavLink exact to='/'>
+                        <NavLink exact to='/pool'>
                             <img src={logo} alt='' className='logo' />
                         </NavLink>
                     </div>
                     <div className='second-child'>
                         <ul>
                             <li>
-                                <NavLink exact to='/'>
+                                <NavLink exact to='/pool'>
                                     <img src={userImg} alt='' />
                                 </NavLink>
                             </li>

@@ -18,6 +18,7 @@ export class _PoolEdit extends Component {
             type: '',
             createdAt: null,
             finishedAt: null,
+            email: '',
         },
     };
     async componentDidMount() {
@@ -62,7 +63,7 @@ export class _PoolEdit extends Component {
         }
     };
     render() {
-        const { name, city, members, type, createdAt, finishedAt } = this.state;
+        const { name, city, members, type, createdAt, finishedAt,email } = this.state;
         return (
             <div className='edit-container'>
                 <form className='pool-edit' onSubmit={this.onSaveMember}>
@@ -151,6 +152,14 @@ export class _PoolEdit extends Component {
                         value={finishedAt}
                         onChange={this.handleChange}
                         name='finishedAt'
+                    />
+                     <label htmlFor='email'>Email</label>
+                    <input
+                        type='email'
+                        id='email'
+                        value={email}
+                        onChange={this.handleChange}
+                        name='email'
                     />
                     <button>Save Member</button>
                     <Link to={'/pool'}>
