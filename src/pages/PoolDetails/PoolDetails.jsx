@@ -5,6 +5,7 @@ import { removeMember, getMemberById } from '../../store/actions/poolActions';
 import { socketService } from '../../services/socket.service';
 import edit from '../../assests/imgs/edit.png';
 import { AppHeader } from '../../cmps/AppHeader/AppHeader';
+import { WhatsappPage } from '../../cmps/WhatsappPage/WhatsappPage';
 import remove from '../../assests/imgs/delete.png';
 import home from '../../assests/imgs/home.png';
 import schedule from '../../assests/imgs/schedule.png';
@@ -42,9 +43,13 @@ export class _PoolDetails extends Component {
                 <div className='membership-expired'>
                     <AppHeader />
                     <h1>membership expired - please contact member to renew</h1>
-                    <a href={`mailto:${member.email}`} className='mail-link'>
+                    <a
+                        href={`mailto:${member.email}?subject=Your Membership Just Ended&body=Hi,your membership just ended, call 0508513679 or come to the pool recpetion to renew your membership`}
+                        className='mail-link'
+                    >
                         Send Mail
                     </a>
+                    <WhatsappPage />
                     <div className='details-buttons'>
                         <button onClick={() => this.removeMember(member._id)}>
                             <img src={remove} alt='' />
@@ -59,6 +64,7 @@ export class _PoolDetails extends Component {
             return (
                 member && (
                     <section className='pool-details'>
+                        <WhatsappPage member={member}/>
                         <div className='details-container'>
                             <div className='member-details'>
                                 <img
@@ -91,10 +97,13 @@ export class _PoolDetails extends Component {
                                 href={`mailto:${member.email}`}
                                 className='send-mail'
                             >
-                                <img src={gmail} alt='send mail' title="Send mail to member" />
+                                <img
+                                    src={gmail}
+                                    alt='send mail'
+                                    title='Send mail to member'
+                                />
                                 {member.email}
                             </a>
-
                             <div className='details-buttons'>
                                 <button
                                     onClick={() =>

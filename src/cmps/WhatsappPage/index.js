@@ -1,0 +1,1 @@
+export { WhatsappPage } from './WhatsappPage'

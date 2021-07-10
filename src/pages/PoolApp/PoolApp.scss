@@ -3,4 +3,36 @@
         position: relative;
         box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
     }
+
+    h1 {
+        font-size: 1.2rem;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: rgb(62, 121, 180);
+        font-weight: 500;
+        text-transform: capitalize;
+    }
+
+    .main-app-btns {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .mail-link {
+            margin-left: 10px;
+
+            img {
+                width: 40px;
+            }
+        }
+        .whatsapp-link{
+            margin-left: 10px;
+        }
+
+        img {
+            width: 35px;
+            margin-left: 10px;
+        }
+
+
+    }
 }

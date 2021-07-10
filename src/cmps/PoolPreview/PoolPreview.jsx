@@ -21,7 +21,7 @@ export function PoolPreview({ member }) {
                     </div>
                     <div className='pool-preview-details'>
                         <h3>
-                            Started At: {moment(member.createdAt).fromNow()}
+                            Started At: {moment(member.createdAt).format('YYYY-MM-DD')}   
                         </h3>
                         <h3>finished: {moment(member.finishedAt).from()}</h3>
                     </div>
