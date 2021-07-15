@@ -3,9 +3,12 @@ import { connect } from 'react-redux';
 import { AppHeader } from '../../cmps/AppHeader/AppHeader';
 import { loadMembers } from '../../store/actions/poolActions';
 import { PoolList } from '../../cmps/PoolList/PoolList';
+import { CircularIndeterminate } from '../../cmps/CircularIndeterminate/CircularIndeterminate';
 import { Link } from 'react-router-dom';
-import plusMember from '../../assests/imgs/plus.png';
-import gmail from '../../assests/imgs/gmail.png';
+import EmailRoundedIcon from '@material-ui/icons/EmailRounded';
+import AddIcon from '@material-ui/icons/Add';
+// import plusMember from '../../assests/imgs/plus.png';
+// import gmail from '../../assests/imgs/gmail.png';
 // import message from '../../assests/imgs/message.png'
 import './PoolApp.scss';
 
@@ -22,13 +25,14 @@ export class _PoolApp extends Component {
 
     render() {
         const { members } = this.props;
+        if (!members) return <CircularIndeterminate />;
         return (
             <section className='pool-app'>
                 <AppHeader />
                 <h1>welcome to Mg-Pool System</h1>
                 <div className='main-app-btns'>
                     <Link to='/pool/edit' title='Add a Pool member'>
-                        <img src={plusMember} alt='' />
+                        <AddIcon color="primary" />
                     </Link>
                     <a
                         href={`mailto:${members.map(
@@ -36,18 +40,8 @@ export class _PoolApp extends Component {
                         )}?subject=A message from Merom-Golan Pool`}
                         className='mail-link'
                     >
-                        <img src={gmail} alt='' title='Send Mails To Members' />
+                        <EmailRoundedIcon color='primary'/>
                     </a>
-                    {/* <a
-                        href={`https://wa.me/${members.map(
-                            (member) => member.phone
-                        )}`}
-                        className='whatsapp-link'
-                        target='_blank'
-                        rel='noopener noreferrer'
-                    >
-                        <img src={message} alt='' />
-                    </a> */}
                 </div>
                 <PoolList members={members} />
             </section>

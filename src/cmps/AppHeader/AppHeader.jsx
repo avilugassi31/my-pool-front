@@ -8,6 +8,7 @@ import { socketService } from '../../services/socket.service';
 import logo from '../../assests/imgs/logo.png';
 import userImg from '../../assests/imgs/users.png';
 import signup from '../../assests/imgs/signup.png';
+import dashboard from '../../assests/imgs/dashboard.png';
 import './AppHeader.scss';
 
 class _AppHeader extends React.Component {
@@ -47,6 +48,11 @@ class _AppHeader extends React.Component {
                                 </NavLink>
                             </li>
                             <li>
+                                <NavLink exact to='/dashboard'>
+                                    <img src={dashboard} alt='' />
+                                </NavLink>
+                            </li>
+                            <li>
                                 <NavLink exact to={'/user/' + loggedInUser._id}>
                                     <img src={user.imgUrl} alt='' />
                                 </NavLink>
@@ -60,7 +66,7 @@ class _AppHeader extends React.Component {
             return (
                 <section className='App-Header'>
                     <div className='first-child'>
-                        <NavLink exact to='/pool'>
+                        <NavLink exact to='/'>
                             <img src={logo} alt='' className='logo' />
                         </NavLink>
                     </div>
@@ -74,6 +80,11 @@ class _AppHeader extends React.Component {
                             <li>
                                 <NavLink exact to='/login'>
                                     <img src={signup} alt='' />
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink exact to='/dashboard'>
+                                    <img src={dashboard} alt='' />
                                 </NavLink>
                             </li>
                         </ul>

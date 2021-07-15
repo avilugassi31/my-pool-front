@@ -1,9 +1,11 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+// import Button from '@material-ui/core/Button';
+
 import { loadMembers } from '../../store/actions/poolActions';
 import { poolService } from '../../services/pool.service';
-import home from '../../assests/imgs/home.png';
+import back from '../../assests/imgs/backTo.png';
 import { socketService } from '../../services/socket.service';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -19,7 +21,7 @@ export class _PoolEdit extends Component {
             createdAt: null,
             finishedAt: null,
             email: '',
-            phone:null
+            phone: null,
         },
     };
     async componentDidMount() {
@@ -50,7 +52,8 @@ export class _PoolEdit extends Component {
             };
             this.props.members.push(member);
             socketService.emit('add msg', msg);
-            this.props.history.push('/pool');
+
+            this.props.history.push('/pool')
         } catch (err) {
             console.log('err:', err);
             const msg = {
@@ -64,119 +67,165 @@ export class _PoolEdit extends Component {
         }
     };
     render() {
-        const { name, city, members, type, createdAt, finishedAt,email,phone } = this.state;
+        const {
+            name,
+            city,
+            members,
+            type,
+            createdAt,
+            finishedAt,
+            email,
+            phone,
+        } = this.state;
+
         return (
-            <div className='edit-container'>
-                <form className='pool-edit' onSubmit={this.onSaveMember}>
-                    <label htmlFor='name'>name</label>
-                    <input
-                        required
-                        type='text'
-                        id='name'
-                        value={name}
-                        onChange={this.handleChange}
-                        name='name'
-                    />
-                    <label htmlFor='city'>city</label>
-                    <input
-                        required
-                        type='text'
-                        id='city'
-                        value={city}
-                        onChange={this.handleChange}
-                        name='city'
-                    />
-                    <label htmlFor='members'>members</label>
-                    <input
-                        required
-                        type='number'
-                        id='members'
-                        value={members}
-                        onChange={this.handleChange}
-                        name='members'
-                    />
-                    <label htmlFor='type'>type</label>
-                    <select
-                        required
-                        id='type'
-                        value={type}
-                        onChange={this.handleChange}
-                        name='type'
-                    >
-                        <option value='single seasonal'>single seasonal</option>
-                        <option value='couple seasonal'>couple seasonal</option>
-                        <option value='3/4 family seasonal'>
-                            3/4 family seasonal
-                        </option>
-                        <option value='5/6 family seasonal'>
-                            5/6 family seasonal
-                        </option>
-                        <option value='handicapped seasonal'>
-                            handicapped seasonal
-                        </option>
-                        <option value='single pensionser seasonal'>
-                            single pensionser seasonal
-                        </option>
-                        <option value='couple pensionser seasonal'>
-                            couple pensionser seasonal
-                        </option>
-                        <option value='single monthly'>single monthly</option>
-                        <option value='couple Monthly'>couple Monthly</option>
-                        <option value='3/4 family Monthly'>
-                            3/4 family Monthly
-                        </option>
-                        <option value='5/6 family Monthly'>
-                            5/6 family Monthly
-                        </option>
-                        <option value='handicapped Monthly'>
-                            handicapped Monthly
-                        </option>
-                        <option value='single pensionser Monthly'>
-                            single pensionser Monthly
-                        </option>
-                        <option value='couple pensionser Monthly'>
-                            couple pensionser Monthly
-                        </option>
-                    </select>
-                    <label htmlFor='createdAt'>createdAt</label>
-                    <input
-                        type='date'
-                        id='createdAt'
-                        value={createdAt}
-                        onChange={this.handleChange}
-                        name='createdAt'
-                    />
-                    <label htmlFor='finishedAt'>finishedAt</label>
-                    <input
-                        type='date'
-                        id='finishedAt'
-                        value={finishedAt}
-                        onChange={this.handleChange}
-                        name='finishedAt'
-                    />
-                     <label htmlFor='email'>Email</label>
-                    <input
-                        type='email'
-                        id='email'
-                        value={email}
-                        onChange={this.handleChange}
-                        name='email'
-                    />
-                      <label htmlFor='phone'>Phone</label>
-                    <input
-                        type='phone'
-                        id='phone'
-                        value={phone}
-                        onChange={this.handleChange}
-                        name='phone'
-                    />
-                    <button>Save Member</button>
-                    <Link to={'/pool'}>
-                        <img src={home} alt='' />
-                    </Link>
-                </form>
-                <ToastContainer />
-            </div>
+            <section className='edit-page'>
+                <div className='edit-container'>
+                    <h1>Add A New Member</h1>
+                    <form className='pool-edit' onSubmit={this.onSaveMember}>
+                        <div className='name-in-form'>
+                            <label htmlFor='name'>name</label>
+                            <input
+                                required
+                                type='text'
+                                id='name'
+                                value={name}
+                                onChange={this.handleChange}
+                                name='name'
+                                placeholder='Member Name Please'
+                            />
+                        </div>
+                        <div className='city-in-form'>
+                            <label htmlFor='city'>city</label>
+                            <input
+                                required
+                                type='text'
+                                id='city'
+                                value={city}
+                                onChange={this.handleChange}
+                                name='city'
+                                placeholder='Member Address Please'
+                            />
+                        </div>
+                        <div className='members-in-form'>
+                            <label htmlFor='members'>members</label>
+                            <input
+                                required
+                                type='number'
+                                id='members'
+                                value={members}
+                                onChange={this.handleChange}
+                                name='members'
+                                placeholder='How Many Members'
+                            />
+                        </div>
+                        <div className='type-in-form'>
+                            <label htmlFor='type'>type</label>
+                            <select
+                                required
+                                id='type'
+                                value={type}
+                                onChange={this.handleChange}
+                                name='type'
+                            >
+                                <option value='single seasonal'>
+                                    single seasonal
+                                </option>
+                                <option value='couple seasonal'>
+                                    couple seasonal
+                                </option>
+                                <option value='3/4 family seasonal'>
+                                    3/4 family seasonal
+                                </option>
+                                <option value='5/6 family seasonal'>
+                                    5/6 family seasonal
+                                </option>
+                                <option value='handicapped seasonal'>
+                                    handicapped seasonal
+                                </option>
+                                <option value='single pensionser seasonal'>
+                                    single pensionser seasonal
+                                </option>
+                                <option value='couple pensionser seasonal'>
+                                    couple pensionser seasonal
+                                </option>
+                                <option value='single monthly'>
+                                    single monthly
+                                </option>
+                                <option value='couple Monthly'>
+                                    couple Monthly
+                                </option>
+                                <option value='3/4 family Monthly'>
+                                    3/4 family Monthly
+                                </option>
+                                <option value='5/6 family Monthly'>
+                                    5/6 family Monthly
+                                </option>
+                                <option value='handicapped Monthly'>
+                                    handicapped Monthly
+                                </option>
+                                <option value='single pensionser Monthly'>
+                                    single pensionser Monthly
+                                </option>
+                                <option value='couple pensionser Monthly'>
+                                    couple pensionser Monthly
+                                </option>
+                            </select>
+                        </div>
+                        <div className='create-in-form'>
+                            <label htmlFor='createdAt'>created At</label>
+                            <input
+                                required
+                                type='date'
+                                id='createdAt'
+                                value={createdAt}
+                                onChange={this.handleChange}
+                                name='createdAt'
+                            />
+                        </div>
+                        <div className='finish-in-form'>
+                            <label htmlFor='finishedAt'>finishedAt</label>
+                            <input
+                                required
+                                type='date'
+                                id='finishedAt'
+                                value={finishedAt}
+                                onChange={this.handleChange}
+                                name='finishedAt'
+                            />
+                        </div>
+                        <div className='email-in-form'>
+                            <label htmlFor='email'>Email</label>
+                            <input
+                                required
+                                type='email'
+                                id='email'
+                                value={email}
+                                onChange={this.handleChange}
+                                name='email'
+                                placeholder='Member Email Adreess'
+                            />
+                        </div>
+                        <div className='phone-in-form'>
+                            <label htmlFor='phone'>Phone</label>
+                            <input
+                                required
+                                type='phone'
+                                id='phone'
+                                value={phone}
+                                onChange={this.handleChange}
+                                name='phone'
+                                placeholder='Member Phone Number'
+                            />
+                        </div>
+                        <button>Save Member</button>
+                        <Link to={'/pool'}>
+                            <img src={back} alt='' title='Back Home' />
+                        </Link>
+                    </form>
+                    <ToastContainer />
+                </div>
+            </section>
         );
     }
 }

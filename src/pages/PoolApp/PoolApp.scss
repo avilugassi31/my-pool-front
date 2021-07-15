@@ -1,7 +1,10 @@
 .pool-app {
+    background-color: rgba(195, 221, 252, 0.527);
+
     .App-Header {
         position: relative;
         box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+        background-color: #fff;
     }
 
     h1 {
@@ -24,7 +27,8 @@
                 width: 40px;
             }
         }
-        .whatsapp-link{
+
+        .whatsapp-link {
             margin-left: 10px;
         }
 

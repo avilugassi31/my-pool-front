@@ -4,6 +4,7 @@ import 'aos/dist/aos.css';
 import './WhatsappPage.scss';
 import message from '../../assests/imgs/message.png';
 AOS.init();
+
 export function WhatsappPage({ member }) {
     console.log('member:', member);
     return (

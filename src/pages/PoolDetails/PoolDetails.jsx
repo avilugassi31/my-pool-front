@@ -6,6 +6,7 @@ import { socketService } from '../../services/socket.service';
 import edit from '../../assests/imgs/edit.png';
 import { AppHeader } from '../../cmps/AppHeader/AppHeader';
 import { WhatsappPage } from '../../cmps/WhatsappPage/WhatsappPage';
+import { LinearDeterminate } from '../../cmps/LinearDeterminate/LinearDeterminate';
 import remove from '../../assests/imgs/delete.png';
 import home from '../../assests/imgs/home.png';
 import schedule from '../../assests/imgs/schedule.png';
@@ -33,7 +34,7 @@ export class _PoolDetails extends Component {
     };
     render() {
         const { member } = this.props;
-        if (!member) return <div>Loading</div>;
+        if (!member) return <LinearDeterminate />;
         const date = new Date();
         var dateDiff1 = moment(date);
         var dateDiff2 = moment(member.finishedAt);
@@ -49,7 +50,8 @@ export class _PoolDetails extends Component {
                     >
                         Send Mail
                     </a>
-                    <WhatsappPage />
+
+                    <WhatsappPage member={member} />
                     <div className='details-buttons'>
                         <button onClick={() => this.removeMember(member._id)}>
                             <img src={remove} alt='' />
@@ -64,7 +66,7 @@ export class _PoolDetails extends Component {
             return (
                 member && (
                     <section className='pool-details'>
-                        <WhatsappPage member={member}/>
+                        <WhatsappPage member={member} />
                         <div className='details-container'>
                             <div className='member-details'>
                                 <img
@@ -73,37 +75,78 @@ export class _PoolDetails extends Component {
                                 />
                                 <h1 className='member-name'>{member.name}</h1>
                             </div>
-                            <h2>
-                                <img src={home} alt='' />
-                                {''} {member.city}
-                            </h2>
-                            <h2 className='members-img'>
-                                <img src={members} alt='' /> {''}{' '}
-                                {member.members}
-                            </h2>
-                            <h2>
-                                {' '}
-                                <img src={card} alt='' /> {''} {member.type}
-                            </h2>
-                            <h2>
-                                <img src={schedule} alt='' /> {''}
-                                {new Date(member.createdAt).toDateString()}
-                            </h2>
-                            <h2>
-                                <img src={schedule} alt='' /> {''}
-                                {new Date(member.finishedAt).toDateString()}
-                            </h2>
-                            <a
-                                href={`mailto:${member.email}`}
-                                className='send-mail'
-                            >
-                                <img
-                                    src={gmail}
-                                    alt='send mail'
-                                    title='Send mail to member'
-                                />
-                                {member.email}
-                            </a>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            {' '}
+                                            <img src={home} alt='' />
+                                        </th>
+                                        <th>
+                                            {' '}
+                                            <img src={members} alt='' />
+                                        </th>
+                                        <th>
+                                            {' '}
+                                            <img src={card} alt='' />
+                                        </th>
+                                        <th>
+                                            {' '}
+                                            <img src={schedule} alt='' />
+                                        </th>
+                                        <th>
+                                            {' '}
+                                            <img src={schedule} alt='' />
+                                        </th>
+                                        <th>
+                                            {' '}
+                                            <img
+                                                src={gmail}
+                                                alt='send mail'
+                                                title='Send mail to member'
+                                            />
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <h2> {member.city}</h2>
+                                        </td>
+                                        <td>
+                                            <h2>{member.members}</h2>
+                                        </td>
+                                        <td>
+                                            <h2>{member.type}</h2>
+                                        </td>
+                                        <td>
+                                            <h2>
+                                                {new Date(
+                                                    member.createdAt
+                                                ).toDateString()}
+                                            </h2>
+                                        </td>
+                                        <td>
+                                            <h2>
+                                                {new Date(
+                                                    member.finishedAt
+                                                ).toDateString()}
+                                            </h2>
+                                        </td>
+                                        <td>
+                                            <h2>
+                                                <a
+                                                    href={`mailto:${member.email}`}
+                                                    className='send-mail'
+                                                >
+                                                    {member.email}
+                                                </a>
+                                            </h2>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
                             <div className='details-buttons'>
                                 <button
                                     onClick={() =>

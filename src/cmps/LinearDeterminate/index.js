@@ -1,0 +1,1 @@
+export { LinearDeterminate } from './LinearDeterminate'

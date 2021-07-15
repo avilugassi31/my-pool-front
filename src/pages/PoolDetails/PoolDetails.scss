@@ -3,41 +3,96 @@
     margin-top: 3px;
     margin-bottom: 5px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-
-    .member-name {
-        margin: 0 auto 10px;
-        text-transform: capitalize;
-        color: black;
-        text-decoration: underline;
-    }
+    // background-color: lightblue;
+    height: 95vh;
 
     h2 {
         margin-top: 10px;
         text-transform: capitalize;
-        font-size: 1.2rem;
+        font-size: 1.5rem;
         font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-        color: rgb(62, 121, 180);
+        color: rgb(99, 71, 29);
         font-weight: 400;
     }
 
     .details-container {
-        background-color: rgb(255, 255, 255);
+        background-image: url('../../assests/imgs/pool2.jpg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
         display: flex;
         flex-direction: column;
-        align-items: center;
-        justify-content: space-around;
         border-radius: 12px;
         box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-        width: 50%;
-        height: 20%;
-        margin: 0 auto;
+        width: 80%;
+        height: 500px;
+        margin: 25px auto;
+
+        table {
+            margin: 10px auto;
+
+            thead {
+                th {
+                    border: 2px solid black;
+                    border-radius: 10px;
+                    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+                    img {
+                        width: 30px;
+
+                    }
+                }
+            }
+
+            tbody {
+                td {
+                    h2 {
+                        color: white;
+                        font-size: 1.4rem;
+                    }
+
+                    h2:hover {
+                        color: rgb(126, 244, 248);
+                    }
+
+                    text-shadow: 1px 1px 2px black,
+                    0 0 25px blue,
+                    0 0 5px darkblue;
+                    border: 2px solid black;
+                    border-radius: 10px;
+                }
+            }
+        }
+
+        .member-details {
+            display: flex;
+            align-items: center;
+            border-bottom: 4px solid lightgrey;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+            img {
+                object-fit: cover;
+                margin-top: 10px;
+                margin-bottom: 10px;
+                border-radius: 50%;
+                margin-left: 20px;
+            }
+
+            .member-name {
+                text-transform: capitalize;
+                color: rgb(148, 174, 247);
+                text-decoration: underline;
+                text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+                align-self: flex-end;
+            }
+        }
 
         .send-mail {
-          
             text-transform: capitalize;
             font-size: 1.2rem;
             font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-            color: rgb(62, 121, 180);
+            color: rgb(255, 255, 255);
             font-weight: 400;
 
             img {
@@ -62,15 +117,7 @@
             }
         }
 
-        .member-details {
-            width: 100%;
-            height: 300px;
 
-            img {
-                height: 16.75rem;
-                object-fit: contain;
-            }
-        }
 
         .details-buttons {
             margin-top: 10px;
@@ -85,7 +132,13 @@
                 margin-bottom: 10px;
 
                 img {
-                    width: 20px;
+                    width: 30px;
+                }
+            }
+
+            a:hover {
+                img {
+                    width: 50px;
                 }
             }
 
@@ -95,10 +148,16 @@
                 margin-left: 5px;
                 margin-bottom: 10px;
                 border: none;
-                background-color: rgb(255, 255, 255);
+                background-color: transparent;
 
                 img {
-                    width: 20px;
+                    width: 30px;
+                }
+            }
+
+            button:hover {
+                img {
+                    width: 50px;
                 }
             }
         }
