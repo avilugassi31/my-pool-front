@@ -9,9 +9,13 @@ export const poolService = {
     getEmptyMember,
 };
 
-async function getMembers() {
-    const members = await httpService.get(POOL_URl);
-    return members;
+async function getMembers(filterBy = null) {
+    const members = await httpService.get(POOL_URl, filterBy);
+    var membersToReturn = members;
+    if (filterBy) {
+        membersToReturn = filter(filterBy);
+    }
+    return membersToReturn;
 }
 
 function getById(id) {
@@ -36,7 +40,18 @@ function getEmptyMember() {
         members: 0,
         type: '',
         createdAt: Date.now(),
-        finishedAt:Date.now(),
-        email:''
+        finishedAt: Date.now(),
+        email: '',
     };
+}
+async function filter({ term }) {
+    term = term.toLocaleLowerCase();
+    const members = await httpService.get(POOL_URl);
+    return members.filter((member) => {
+        return (
+            member.name.toLocaleLowerCase().includes(term) ||
+            member.type.toLocaleLowerCase().includes(term) ||
+            member.city.toLocaleLowerCase().includes(term)
+        );
+    });
 }

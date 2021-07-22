@@ -3,7 +3,6 @@
     margin-top: 3px;
     margin-bottom: 5px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    // background-color: lightblue;
     height: 95vh;
 
     h2 {
@@ -68,7 +67,7 @@
         .member-details {
             display: flex;
             align-items: center;
-            border-bottom: 4px solid lightgrey;
+            border-bottom: 4px solid rgba(126, 124, 124, 0.315);
             box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 
             img {

@@ -1,9 +1,9 @@
 import { poolService } from '../../services/pool.service';
 // import { utilService } from '../../services/util.service';
 
-  export function loadMembers() {
+  export function loadMembers(filterBy) {
     return async (dispatch) => {
-        const members = await poolService.getMembers();
+        const members = await poolService.getMembers(filterBy);
         const action = {
             type: 'SET_MEMBERS',
             members,
