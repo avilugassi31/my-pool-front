@@ -4,6 +4,7 @@ import { Doughnut } from 'react-chartjs-2';
 import { connect } from 'react-redux';
 import { loadMembers } from '../../store/actions/poolActions';
 import { CircularIndeterminate } from '../../cmps/CircularIndeterminate/CircularIndeterminate';
+import moment from 'moment';
 import './DashboardPage.scss';
 
 export class _DashboardPage extends Component {
@@ -15,11 +16,14 @@ export class _DashboardPage extends Component {
         membersInAugust: null,
         membersInSeptember: null,
         membersInOctober: null,
+        date: new Date(),
     };
     componentDidMount() {
         this.props.loadMembers();
         this.getLastItem();
         this.getMembersByMonth();
+        var date = moment(this.state.date).format('MMMM');
+        this.setState({ date });
     }
     getLastItem() {
         const { members } = this.props;
@@ -52,6 +56,7 @@ export class _DashboardPage extends Component {
             membersInAugust,
             membersInSeptember,
             membersInOctober,
+            date,
         } = this.state;
         if (!lastItem) return <CircularIndeterminate />;
         return (
@@ -111,6 +116,9 @@ export class _DashboardPage extends Component {
                         }}
                     />
                 </div>
+                <h1>
+                    In {date} {membersInAugust.length} members Joined
+                </h1>
             </div>
         );
     }

@@ -1,31 +1,31 @@
-import React from 'react';
+// import * as React from 'react';
+// import { DataGrid, GridToolbar } from '@material-ui/data-grid';
+// // import { useDemoData } from '@material-ui/x-grid-data-generator';
 
-import './FilterCmp.scss';
+// export default function FilterCmp() {
+//     // const { data } = useDemoData({
+//     //     dataSet: 'Commodity',
+//     //     rowLength: 100,
+//     //     maxColumns: 6,
+//     // });
 
-export class FilterCmp extends React.Component {
-    state = {
-        term: '',
-    };
-    handleChange = ({ target }) => {
-        const field = target.name;
-        const value = target.value;
-        this.setState({ [field]: value }, () => {
-            this.props.onChangeFilter({ ...this.state });
-        });
-    };
-    render() {
-        const { term } = this.state;
-        return (
-            <form className='filter-cmp' onSubmit={(ev) => ev.preventDefault()}>
-                <input
-                    placeholder='Search Member'
-                    type='text'
-                    id='term'
-                    name='term'
-                    value={term}
-                    onChange={this.handleChange}
-                />
-            </form>
-        );
-    }
-}
+//     return (
+//         <div style={{ height: 400, width: '100%' }}>
+//             <DataGrid
+//                 // {...data}
+//                 components={{
+//                     Toolbar: GridToolbar,
+//                 }}
+//                 filterModel={{
+//                     items: [
+//                         {
+//                             columnField: 'commodity',
+//                             operatorValue: 'contains',
+//                             value: 'rice',
+//                         },
+//                     ],
+//                 }}
+//             />
+//         </div>
+//     );
+// }

@@ -23,11 +23,12 @@ export class _PoolApp extends Component {
             return members;
         }
     };
-    onChangeFilter = (filterBy) => {
-        this.setState({ filterBy }, () =>
-            this.props.loadMemebers(this.state.filterBy)
-        );
-    };
+    // onChangeFilter = (filterBy) => {
+    //     console.log('filterBy:', filterBy);
+    //     this.setState({ filterBy }, () => 
+    //     this.props.loadMemebers(filterBy)
+    //     );
+    // };
 
     render() {
         const { members } = this.props;
@@ -49,7 +50,7 @@ export class _PoolApp extends Component {
                         <EmailRoundedIcon color='primary' />
                     </a>
                 </div>
-                {/* <FilterCmp onChangeFilter={this.onChangeFilter}/> */}
+                {/* <FilterCmp onChangeFilter={this.onChangeFilter} /> */}
                 <PoolList members={members} />
             </section>
         );
