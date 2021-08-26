@@ -63,6 +63,9 @@ export class _DashboardPage extends Component {
             <div className='dashboard-page'>
                 <AppHeader />
                 <h1>Dashboard Page</h1>
+                <h1>
+                    In {date} {membersInAugust.length} members Joined
+                </h1>
                 <h2>
                     <span>{members.length}</span> membership owners up to{' '}
                     <span> {new Date().toDateString()}</span>
@@ -116,9 +119,6 @@ export class _DashboardPage extends Component {
                         }}
                     />
                 </div>
-                <h1>
-                    In {date} {membersInAugust.length} members Joined
-                </h1>
             </div>
         );
     }

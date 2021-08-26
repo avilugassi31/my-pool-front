@@ -4,6 +4,7 @@ import { AppHeader } from '../../cmps/AppHeader/AppHeader';
 import { loadMembers } from '../../store/actions/poolActions';
 import { PoolList } from '../../cmps/PoolList/PoolList';
 import { FilterCmp } from '../../cmps/FilterCmp/FilterCmp';
+import { HorizontalLinearStepper } from '../../cmps/HorizontalLinearStepper/HorizontalLinearStepper';
 import { CircularIndeterminate } from '../../cmps/CircularIndeterminate/CircularIndeterminate';
 import { Link } from 'react-router-dom';
 import EmailRoundedIcon from '@material-ui/icons/EmailRounded';
@@ -25,7 +26,7 @@ export class _PoolApp extends Component {
     };
     // onChangeFilter = (filterBy) => {
     //     console.log('filterBy:', filterBy);
-    //     this.setState({ filterBy }, () => 
+    //     this.setState({ filterBy }, () =>
     //     this.props.loadMemebers(filterBy)
     //     );
     // };
@@ -36,7 +37,7 @@ export class _PoolApp extends Component {
         return (
             <section className='pool-app'>
                 <AppHeader />
-                <h1>welcome to Mg-Pool System</h1>
+                <HorizontalLinearStepper />
                 <div className='main-app-btns'>
                     <Link to='/pool/edit' title='Add a Pool member'>
                         <AddIcon color='primary' />
